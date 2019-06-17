@@ -237,8 +237,9 @@ int Solver::solve()
     for (size_t i = 0; i < m_argsDim; i++){
         double x;
         res->getCoord(i, x);
-        ILog::report(QString::number(x).toStdString().c_str());
+        REPORT(QString::number(x).toStdString().c_str());
     }
+    m_solved = true;
     return ERR_OK;
 }
 
