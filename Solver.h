@@ -35,16 +35,16 @@ private:
     size_t m_paramsDim;
     size_t m_solverParamsCount;
     QScopedPointer<IVector> m_solution;
-    QScopedPointer<IProblem> m_problem;
+    IProblem* m_problem;
     QScopedPointer<IVector> m_params;
 
     /*non default copyable*/
     Solver(const ISolver& other) = delete;
-    int getVecFromStr(const QString& str, QScopedPointer<IVector> &res, bool isParams = false);
     void operator=(const ISolver& other) = delete;
+    int getVecFromStr(const QString& str, QScopedPointer<IVector> &res, bool isParams = false);
     int initCompactAndIt(QScopedPointer<ICompact> &compact,
-                                 QScopedPointer<ICompact::IIterator> &it,
-                                 QScopedPointer<ICompact::IIterator> &itEnd);
+                                 ICompact::IIterator*& it,
+                                 ICompact::IIterator*& itEnd);
 };
 
 #endif // SOLVER_H
